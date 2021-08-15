@@ -3,9 +3,9 @@ MOWE is 'Multi OS Wallpaper Engine'. This is Wallpaper Engine for any OS like Ma
 This Project use SDL, WinAPI, Gtk+3.
 
 ## contents
-- [Installation](##Installation)
-- [Pull Request](##Pull-Reqeust)
-- [License](##License)
+- [Installation](#Installation)
+- [Pull Request](#Pull-Reqeust)
+- [License](#License)
 
 ## Installation
 Sorry, there is no Release
