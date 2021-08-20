@@ -12,7 +12,7 @@
 #if WIN32
 #include <windows.h>
 #else
-#include "gtk/gtkx.h"
+#include <X11/Xlib.h>
 #endif
 
 class UI {
@@ -21,9 +21,7 @@ public:
     
     int init(const char *title, int w, int h, bool fullscreen);
 
-    void render();
-    void cleanRenderer();
-    void clean();
+    void showImage(char* wallpaperDir);
     
 private:
     SDL_Renderer * renderer;

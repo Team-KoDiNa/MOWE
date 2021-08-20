@@ -1,6 +1,6 @@
 #include "header/ui.h"
 
-#if Win32
+#if _WIN32 || _WIN64
 BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam) {
     HWND p = FindWindowEx(hwnd, NULL, "SHELLDLL_DefView", NULL);
     HWND* ret = (HWND*)lParam;
@@ -20,11 +20,10 @@ HWND get_wallpaper_window(){
     return wallpaper_hwnd;
 }
 #else 
-void* get_wallpaper_window(int argc, char * argv[]){
-    GtkWidget *widget;
-    gtk_init (&argc, &argv);
-    Window w = gdk_x11_drawable_get_xid(gtk_widget_get_window(widget));
-    return w;
+Window get_wallpaper_window(){
+    Display* x11d = XOpenDisplay(NULL);
+    Window x11w = RootWindow(x11d, DefaultScreen(x11d));
+    return x11w;
 }
 #endif
 
@@ -42,7 +41,11 @@ int UI::init(const char *title, int w, int h, bool fullscreen){
     }
     
     if(SDL_Init(SDL_INIT_VIDEO) == 0){
-        window = SDL_CreateWindowFrom((void*)get_wallpaper_window());
+        SDL_Window* window = SDL_CreateWindowFrom((void*)get_wallpaper_window());
+        renderer = SDL_CreateRenderer(window, -1, 0);
     }
+}
+
+void UI::showImage(char* wallpaperDir){
     
 }
