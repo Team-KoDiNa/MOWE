@@ -8,6 +8,7 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 #include "SDL2/SDL_ttf.h"
+#include "header/ParsingJSON.h"
 
 #if WIN32
 #include <windows.h>
@@ -15,13 +16,15 @@
 #include <X11/Xlib.h>
 #endif
 
-class UI {
+using namespace std;
+
+class UI : protected parseJSON {
 public:
     UI();
     
-    int init(const char *title, int w, int h, bool fullscreen);
+    int init(bool fullscreen);
 
-    void showImage(char* wallpaperDir);
+    void showImage(SDL_Window* window,string wallpaperDir);
     
 private:
     SDL_Renderer * renderer;
