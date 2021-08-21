@@ -1,4 +1,4 @@
-#include "header/ui.h"
+#include "header/WallpaperUI.h"
 
 #if _WIN32 || _WIN64
 BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam) {
@@ -31,10 +31,10 @@ UI::UI(){
     //no func now
 }
 
-int UI::init(const char *title, int w, int h, bool fullscreen){
+int UI::init(bool fullscreen){
     int flag = 0;
-    this -> w = w;
-    this -> h = h;
+    this -> w = parseJSON::w;
+    this -> h = parseJSON::h;
     
     if(fullscreen){
         flag = SDL_WINDOW_FULLSCREEN;
@@ -44,8 +44,30 @@ int UI::init(const char *title, int w, int h, bool fullscreen){
         SDL_Window* window = SDL_CreateWindowFrom((void*)get_wallpaper_window());
         renderer = SDL_CreateRenderer(window, -1, 0);
     }
+
+    if(parseJSON::fileExtension == "png" || parseJSON::fileExtension == "jpeg"){
+        showImage(parseJSON::wallpaperDir)
+    }
 }
 
-void UI::showImage(char* wallpaperDir){
-    
+void UI::showImage(SDL_Window* window, string wallpaperDir){
+    wallpaperDir = parseJSON::wallpaperDir;
+    bool quit = false;
+    window
+
+    while(!quit){
+        SDL_WaitEvent(&event);
+
+        switch(event.type){
+            case SDL_QUIT:
+            quit = true;
+            break;
+        }
+    }
+
+    /*
+     --todo--
+     1. parsing JSON
+     2. decide how to organize a wallpaper folder
+     */
 }
