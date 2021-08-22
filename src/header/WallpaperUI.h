@@ -24,12 +24,13 @@ public:
     
     int init(bool fullscreen);
 
-    void showImage(SDL_Window* window,string wallpaperDir);
+    void clean();
     
 private:
     SDL_Renderer * renderer;
     SDL_Window *window;
     SDL_Event event;
+    SDL_Texture * texture;
     
     int w, h;
 };
