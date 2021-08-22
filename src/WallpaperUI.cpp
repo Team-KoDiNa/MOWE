@@ -45,25 +45,26 @@ int UI::init(bool fullscreen){
         renderer = SDL_CreateRenderer(window, -1, 0);
     }
 
-    if(parseJSON::fileExtension == "png" || parseJSON::fileExtension == "jpeg"){
-        showImage(parseJSON::wallpaperDir)
+    if(parseJSON::fileExtension == "png" || parseJSON::fileExtension == "jpeg"){ //set png to wallpaper
+        SDL_Surface * image = IMG_Load(parseJSON::wallpaperDir);
+        texture = SDL_CreateTextureFromSurface(renderer, image);
+        SDL_FreeSurface(image);
+        SDL_Rect destination;
+        destination.h = parseJSON::h;
+        destination.w = parseJSON::w;
+        destination.x = 0;
+        destination.y = 0;
+
+        SDL_RenderCopy(renderer, texture, NULL, &destination);
     }
 }
 
-void UI::showImage(SDL_Window* window, string wallpaperDir){
-    wallpaperDir = parseJSON::wallpaperDir;
-    bool quit = false;
-    window
-
-    while(!quit){
-        SDL_WaitEvent(&event);
-
-        switch(event.type){
-            case SDL_QUIT:
-            quit = true;
-            break;
-        }
-    }
+void UI::clean(){
+    SDL_DestroyWindow(window);
+	SDL_DestroyRenderer(renderer);
+    SDL_DestroyTexture(texture);
+	SDL_Quit();
+}
 
     /*
      --todo--
