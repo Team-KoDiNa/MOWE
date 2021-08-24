@@ -1,6 +1,6 @@
 #  MOWE
 MOWE is 'Multi OS Wallpaper Engine'. This is Wallpaper Engine for any OS like MacOSX, Windows, Linux.
-This Project use SDL, WinAPI, Gtk+3.
+This Project use SDL, WinAPI, X11 API
 
 ## contents
 - [Installation](#Installation)
