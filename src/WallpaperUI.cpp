@@ -45,7 +45,9 @@ int UI::init(bool fullscreen){
         renderer = SDL_CreateRenderer(window, -1, 0);
     }
 
-    if(parseJSON::fileExtension == "png" || parseJSON::fileExtension == "jpeg"){ //set png to wallpaper
+    string fileExt = parseJSON::fileExtension;
+
+    if(fileExt == "png" || fileExt == "jpeg"){ 
         SDL_Surface * image = IMG_Load(parseJSON::wallpaperDir);
         texture = SDL_CreateTextureFromSurface(renderer, image);
         SDL_FreeSurface(image);
@@ -55,8 +57,16 @@ int UI::init(bool fullscreen){
         destination.x = 0;
         destination.y = 0;
 
-        SDL_RenderCopy(renderer, texture, NULL, &destination);
+        if(SDL_RenderCopy(renderer, texture, NULL, &destination) != 0){
+            perror("Rendering ERROR... Quitting . . .");
+            clean();
+        }
     }
+    else if(fileExt == "mp4" || fileExt == "avi"){
+        
+    }
+    
+    return 0;
 }
 
 void UI::clean(){
@@ -66,9 +76,5 @@ void UI::clean(){
 	SDL_Quit();
 }
 
-    /*
-     --todo--
-     1. parsing JSON
-     2. decide how to organize a wallpaper folder
-     */
-}
+    
+
