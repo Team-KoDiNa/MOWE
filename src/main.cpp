@@ -26,3 +26,11 @@ int* getScreenSize(){
     
     return resolution;
 }
+
+/*
+     --todo--
+     1. parsing JSON <- done
+     2. decide how to organize a wallpaper folder <- done
+     3. make code with ffmpeg(doing. . .)
+     4. edit WallaperUI.cpp & ParingJSON.cpp (becuz i make code like shxt)
+*/
