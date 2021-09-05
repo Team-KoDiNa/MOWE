@@ -21,4 +21,4 @@ Thanks for your interest in contributing to this Project.
 If you are a Programmer or Engineer, and want to contribute this Project, You can Pull Request any time.
 
 ## License 
-[MIT](https://choosealicense.com/licenses/mit/)
+Copyright by Team KoDiNa & Rooftop Cooperate
