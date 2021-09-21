@@ -15,18 +15,17 @@ public:
     int init(string fileDir);
     //read json
     int read_json(string fileDir);
-    
-    // //get value from json
-    // int get_height();
-    // int get_weight();
-    // string get_wallpaperFileName();
-    // string get_dir();
-    // string get_Extension();
-    // bool isWeb();
-    // string get_userSetting();
+
+    int returnHeight(){ return h; };
+    int returnWeight(){ return w; };
+
+    string returnFileExtension(){ return fileExtension; };
+    string returnWallpaperDir(){ return wallpaperDir; };
 
 protected:
-    string wallpaperFileName,fileExtension,wallpaperDir;
+    static parseJSON* instance;
+    string wallpaperFileName,fileExtension;
+    string wallpaperDir;
     int h,w;
     bool isWeb;
     Json::Value userSetting;

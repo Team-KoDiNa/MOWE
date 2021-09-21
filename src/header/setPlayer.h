@@ -11,7 +11,7 @@ class Player{
     public:
         static Player* get_instance();
 
-        void init(string, string window_name="");
+        void run(string video_addr, string window_name);
         void clear();
 
 	    // static int getAudioPacket(AudioPacket*, AVPacket*, int); <- maybe add it later :((
