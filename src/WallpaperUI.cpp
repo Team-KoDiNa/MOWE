@@ -31,10 +31,13 @@ UI::UI(){
     //no func now
 }
 
-int UI::init(bool fullscreen){
+int UI::init(bool fullscreen,string fileDir){
     int flag = 0;
-    this -> w = parseJSON::w;
-    this -> h = parseJSON::h;
+    parseJSON Jsonfile;
+    Jsonfile.read_json(fileDir);
+
+    this -> w = Jsonfile.returnWeight();
+    this -> h = Jsonfile.returnHeight();
     
     if(fullscreen){
         flag = SDL_WINDOW_FULLSCREEN;
@@ -45,15 +48,15 @@ int UI::init(bool fullscreen){
         renderer = SDL_CreateRenderer(window, -1, 0);
     }
 
-    string fileExt = parseJSON::fileExtension;
+    string fileExt = Jsonfile.returnFileExtension();
 
     if(fileExt == "png" || fileExt == "jpeg"){ 
-        SDL_Surface * image = IMG_Load(parseJSON::wallpaperDir);
+        SDL_Surface * image = IMG_Load(Jsonfile.returnWallpaperDir().c_str());
         texture = SDL_CreateTextureFromSurface(renderer, image);
         SDL_FreeSurface(image);
         SDL_Rect destination;
-        destination.h = parseJSON::h;
-        destination.w = parseJSON::w;
+        destination.h = h;
+        destination.w = w;
         destination.x = 0;
         destination.y = 0;
 
