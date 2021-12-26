@@ -74,9 +74,9 @@ int UI::init(bool fullscreen,string fileDir){
 
 void UI::clean(){
     SDL_DestroyWindow(window);
-	SDL_DestroyRenderer(renderer);
+	  SDL_DestroyRenderer(renderer);
     SDL_DestroyTexture(texture);
-	SDL_Quit();
+	  SDL_Quit();
 }
 
     
