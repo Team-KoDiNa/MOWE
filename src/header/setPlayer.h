@@ -1,9 +1,9 @@
 #pragma once
-//include ffmpeg
-#include <libavcodec/avcodec.h>
-#include <libavformat/avformat.h>
-#include <libswscale/swscale.h>
-#include<iostream>
+
+#include <iostream>
+#include "libavcodec/avcodec.h"
+#include "libavformat/avformat.h"
+#include "libswscale/swscale.h"
 
 using namespace std;
 
@@ -29,6 +29,9 @@ class Player{
         int get_video_stream(void);
 
         int read_audio_video_codec(void);
+
+        int videoStream = 0;
+	    int audioStream = 0;
 
         std::string video_addr;
         std::string window_name;
